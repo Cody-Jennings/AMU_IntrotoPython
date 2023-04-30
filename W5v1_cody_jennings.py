@@ -2,13 +2,17 @@
 # Student Name: Cody Jennings
 # Course: ENTD220
 # Instructor: Ahmed Abaza
-# Date: 20230416
+# Date: 20230429
 
 # Importing Mylib module
 from W5v1_cody_jennings_Mylib import add, subtract, multiply, divide, scalc
 
 #Welcome message to user.
 print("Welcome to Python Calculator V2!")
+
+# Define constants for the range limits
+lowerLimit = -90
+upperLimit = 100
 
 # While loop to perform calculations based on user input.
 while True:
@@ -17,7 +21,7 @@ while True:
     while True:
         try:
             lower_range_limit = float(input("\nEnter your Lower range (-90 thru 100): "))
-            if lower_range_limit < -90 or lower_range_limit > 100:
+            if lower_range_limit < lowerLimit or lower_range_limit > upperLimit:
                 raise ValueError
             break
         except ValueError:
@@ -27,7 +31,7 @@ while True:
     while True:
         try:
             upper_range_limit = float(input("\nEnter your Higher range (-90 thru 100): "))
-            if upper_range_limit < -90 or upper_range_limit > 100:
+            if upper_range_limit < lowerLimit or upper_range_limit > upperLimit:
                 raise ValueError
             break
         except ValueError:

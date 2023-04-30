@@ -1,12 +1,19 @@
-# Program Name: Wk6_cody_jennings.py
+# Program Name: Wk7_cody_jennings.py
 # Student Name: Cody Jennings
 # Course: ENTD220
 # Instructor: Ahmed Abaza
 # Correction Date: 20230429
 
 
+#1) Create a class that contains all prior functions, you must convert the functions to methods of that class (do not create static methods, see the lesson for the correct way to create a class)
+
+#2) Test the application (You can create your own application to demonstrate the usage of the class library)
+
 # Importing Mylib module
-from Wk6_cody_jennings_Mylib import add, subtract, multiply, divide, scalc, allInOne
+import Wk7_cody_jennings_Mylib as W7cjm 
+
+#creating object from the class
+finalCalc = W7cjm.Calculator()
 
 #Welcome message to user.
 print("\nWelcome to Python Calculator V2!")
@@ -69,38 +76,42 @@ while True:
 
     # User input for menu choice
     while True:
-        menu_choice = input("\nEnter menu choice (1-6): ")
-        if menu_choice in ["1", "2", "3", "4", "5", "6"]:
+        menu_choice = input("\nEnter menu choice (1-6): ") 
+        if menu_choice in ["1", "2", "3", "4", "5", "6"]:  
             break
         else:
-            print("Invalid input. Please enter a number between 1 and 6.")
+            print("Invalid input. Please enter a number between 1 and 6.") 
 
     # Perform selected operation based on user's menu choice
     if menu_choice == "1":
-        result = allInOne(firstNum, secondNum)["add"]
-        print(f"\n{firstNum} + {secondNum} = {result}")
+        operator = "+"
+        sum = finalCalc.add(firstNum,secondNum)
+        print(f"\nThe result of {firstNum} {operator} {secondNum} = {sum}")
     elif menu_choice == "2":
-        result = allInOne(firstNum, secondNum)["subtract"]
-        print(f"\n{firstNum} - {secondNum} = {result}")
+        operator = "-"
+        sum = finalCalc.subtract(firstNum,secondNum)
+        print(f"\nThe result of {firstNum} {operator} {secondNum} = {sum}")
     elif menu_choice == "3":
-        result = allInOne(firstNum, secondNum)["multiply"]
-        print(f"\n{firstNum} * {secondNum} = {result}")
+        operator = "*"
+        sum = finalCalc.multiply(firstNum,secondNum)
+        print(f"\nThe result of {firstNum} {operator} {secondNum} = {sum}")
     elif menu_choice == "4":
+        operator = "/"
         try:
-            result = allInOne(firstNum, secondNum)["divide"]
-            print(f"\n{firstNum} / {secondNum} = {result}")
+            sum = finalCalc.divide(firstNum, secondNum)
+            print(f"\nThe result of {firstNum} {operator} {secondNum} = {sum}")
         except ZeroDivisionError:
-            print(f"\n{firstNum} * {secondNum} = You cannot divide by zero.")
+            print(f"\n{firstNum} {operator} {secondNum} = You cannot divide by zero.")
     elif menu_choice == "5":
         operator = input("\nEnter operator (+, -, *, /): ")
         try:
-            result = scalc(firstNum, secondNum, operator)
-            print(f"\n{firstNum} {operator} {secondNum} = {result}")
+            sum = finalCalc.scalc(firstNum, secondNum, operator)
+            print(f"\n{firstNum} {operator} {secondNum} = {sum}")
         except ZeroDivisionError:
             print(f"\n{firstNum} {operator} {secondNum} = You cannot divide by zero.")
     elif menu_choice == "6":
         try:
-            all_in_one_result = allInOne(firstNum, secondNum)
+            all_in_one_result = finalCalc.allInOne(firstNum, secondNum)
             print(f"\nThe result of: {firstNum} + {secondNum} = {all_in_one_result['add']}")
             print(f"The result of: {firstNum} - {secondNum} = {all_in_one_result['subtract']}")
             print(f"The result of: {firstNum} * {secondNum} = {all_in_one_result['multiply']}")
@@ -109,16 +120,17 @@ while True:
             else:
                 print(f"The result of: {firstNum} / {secondNum} = {all_in_one_result['divide']}")
         except ZeroDivisionError:
-            print(f"\nThe result of: {firstNum} + {secondNum} = {add(firstNum, secondNum)}")
-            print(f"The result of: {firstNum} - {secondNum} = {subtract(firstNum, secondNum)}")
-            print(f"The result of: {firstNum} * {secondNum} = {multiply(firstNum, secondNum)}")
+            print(f"\nThe result of: {firstNum} + {secondNum} = {finalCalc.add(firstNum, secondNum)}")
+            print(f"The result of: {firstNum} - {secondNum} = {finalCalc.subtract(firstNum, secondNum)}")
+            print(f"The result of: {firstNum} * {secondNum} = {finalCalc.multiply(firstNum, secondNum)}")
             print(f"The result of: {firstNum} / {secondNum} = You cannot divide by zero")
         except TypeError:
-            print(f"\nThe result of: {firstNum} + {secondNum} = {add(firstNum, secondNum)}")
-            print(f"The result of: {firstNum} - {secondNum} = {subtract(firstNum, secondNum)}")
-            print(f"The result of: {firstNum} * {secondNum} = {multiply(firstNum, secondNum)}")
+            print(f"\nThe result of: {firstNum} + {secondNum} = {finalCalc.add(firstNum, secondNum)}")
+            print(f"The result of: {firstNum} - {secondNum} = {finalCalc.subtract(firstNum, secondNum)}")
+            print(f"The result of: {firstNum} * {secondNum} = {finalCalc.multiply(firstNum, secondNum)}")
             print(f"The result of: {firstNum} / {secondNum} = Cannot divide by zero.")
 
+   
 # Ask user if they want to perform another calculation. Displaying error if lower "y" or "n" is not selected, this includes numbers/letters/words in any punctuation, user will be asked for input until acceptable input is given.
     while True:
         choice = input("\nDo you want to perform another calculation? (y/n): ")
@@ -131,3 +143,4 @@ while True:
     if choice == 'n':
         print("\nThanks for using Python Calculator V2!")
         break
+
