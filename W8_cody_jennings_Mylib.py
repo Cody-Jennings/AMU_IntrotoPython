@@ -27,16 +27,20 @@ class Calculator():
 
 # This function takes two numbers and an operator as input and returns the result of the arithmetic operation.   
     def scalc(self, firstNum, secondNum, operator):
-        if operator == "+":
-            return self.add(firstNum, secondNum)
-        elif operator == "-":
-            return self.subtract(firstNum, secondNum)
-        elif operator == "*":
-            return self.multiply(firstNum, secondNum)
-        elif operator == "/":
-            return self.divide(firstNum, secondNum)
-        else:
-            print ("Invalid operator.")
+        try:
+            if operator == "+":
+                return self.add(firstNum, secondNum)
+            elif operator == "-":
+                return self.subtract(firstNum, secondNum)
+            elif operator == "*":
+                return self.multiply(firstNum, secondNum)
+            elif operator == "/":
+                return self.divide(firstNum, secondNum)
+            else:
+                raise ValueError("Invalid operator")
+        except ZeroDivisionError:
+            raise ZeroDivisionError("Cannot divide by zero.")
+
 
 # This function takes two numbers and returns the results of all arithmetic operations.    
     def allInOne(self, firstNum, secondNum):

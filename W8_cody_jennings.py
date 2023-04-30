@@ -106,12 +106,18 @@ while True:
             print(f"\n{firstNum} {operator} {secondNum} = {calc_result}")
 
     elif menu_choice == "5":
-        operator = input("\nEnter operator (+, -, *, /): ")
+        while True:
+            operator = input("\nEnter operator (+, -, *, /): ")
+            if operator in ["+", "-", "*", "/"]:
+                break
+            else:
+                print("Invalid operator. Please try again.")
         try:
             calc_result = finalCalc.scalc(firstNum, secondNum, operator)
             print(f"\n{firstNum} {operator} {secondNum} = {calc_result}")
         except ZeroDivisionError:
             print(f"\n{firstNum} {operator} {secondNum} = You cannot divide by zero.")
+
     elif menu_choice == "6":
         try:
             all_in_one_result = finalCalc.allInOne(firstNum, secondNum)
@@ -200,8 +206,12 @@ while True:
         with open("result.txt", "r") as file:
             if menu_choice in ["1", "2", "3", "4", "5"]:
                 operation = file.readline().strip()
-                print("\nResult from file:")
-                print(operation)
+                if "You cannot divide by zero" in operation:
+                    print("\nResult from file:")
+                    print(operation)
+                else:
+                    print("\nResult from file:")
+                    print(operation)
             elif menu_choice == "6":
                 result = file.read()
                 print("\nResult from file:")

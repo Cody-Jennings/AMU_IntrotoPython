@@ -12,26 +12,30 @@ print("Welcome to Python Calculator V2!")
 
 from Wk5_cody_jennings_Mylib import addition, subtraction, multiplication, division, scalc
 
+# Define constants for the range limits
+lowerLimit = -90
+upperLimit = 100
+
 while True:
     # User input for lower range limit that traps errors that aren't within set/default range of -90 thru 100. This includes numbers/letters/words in any punctuation, user will be asked for input until acceptable input is given.
     while True:
         try:
-            lower_range_limit = float(input("\nEnter your Lower range (-90 thru 100): "))
-            if lower_range_limit < -90 or lower_range_limit > 100:
+            lower_range_limit = float(input(f"\nEnter your Lower range ({lowerLimit} thru {upperLimit}): "))
+            if lower_range_limit < lowerLimit or lower_range_limit > upperLimit:
                 raise ValueError
             break
         except ValueError:
-            print("Invalid input. Please enter a number between -90 and 100.")
+            print(f"Invalid input. Please enter a number between {lowerLimit} thru {upperLimit}.")
 
     # User input for upper range limit that traps errors that aren't within set/default range of -90 thru 100. This includes numbers/letters/words in any punctuation, user will be asked for input until acceptable input is given.
     while True:
         try:
-            upper_range_limit = float(input("\nEnter your Higher range (-90 thru 100): "))
-            if upper_range_limit < -90 or upper_range_limit > 100:
+            upper_range_limit = float(input(f"\nEnter your Higher range ({lowerLimit} thru {upperLimit}): "))
+            if upper_range_limit < lowerLimit or upper_range_limit > upperLimit:
                 raise ValueError
             break
         except ValueError:
-            print("Invalid input. Please enter a number between -90 and 100.")
+            print(f"Invalid input. Please enter a number between {lowerLimit} thru {upperLimit}.")
 
     # User input for first number that traps errors that aren't within user's input range limits. This includes numbers/letters/words in any punctuation, user will be asked for input until acceptable input is given.
     while True:

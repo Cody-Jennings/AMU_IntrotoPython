@@ -2,7 +2,7 @@
 # Student Name: Cody Jennings
 # Course: ENTD220
 # Instructor: Ahmed Abaza
-# Date: 20230429
+# Date: 20230430
 
 # Importing Mylib module
 from W5v1_cody_jennings_Mylib import add, subtract, multiply, divide, scalc
@@ -20,22 +20,22 @@ while True:
     # User input for lower range limit that traps errors that aren't within set/default range of -90 thru 100. This includes numbers/letters/words in any punctuation, user will be asked for input until acceptable input is give
     while True:
         try:
-            lower_range_limit = float(input("\nEnter your Lower range (-90 thru 100): "))
+            lower_range_limit = float(input(f"\nEnter your Lower range ({lowerLimit} thru {upperLimit}): "))
             if lower_range_limit < lowerLimit or lower_range_limit > upperLimit:
                 raise ValueError
             break
         except ValueError:
-            print("Invalid input. Please enter a number between -90 and 100.")
+            print(f"Invalid input. Please enter a number between {lowerLimit} thru {upperLimit}.")
 
     # User input for upper range limit that traps errors that aren't within set/default range of -90 thru 100. This includes numbers/letters/words in any punctuation, user will be asked for input until acceptable input is given.
     while True:
         try:
-            upper_range_limit = float(input("\nEnter your Higher range (-90 thru 100): "))
+            upper_range_limit = float(input(f"\nEnter your Higher range ({lowerLimit} thru {upperLimit}): "))
             if upper_range_limit < lowerLimit or upper_range_limit > upperLimit:
                 raise ValueError
             break
         except ValueError:
-            print("Invalid input. Please enter a number between -90 and 100.")
+            print(f"Invalid input. Please enter a number between {lowerLimit} thru {upperLimit}.")
 
     # User input for first number that traps errors that aren't within user's input range limits. This includes numbers/letters/words in any punctuation, user will be asked for input until acceptable input is given.
     while True:
